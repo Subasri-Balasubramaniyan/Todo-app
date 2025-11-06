@@ -1,0 +1,2389 @@
+body {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background: #fff;
+  margin: 0;
+  color: #222;
+}
+header {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.topbar {
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+nav {
+  background-color: #f4f5f7;
+  border-bottom: 1px solid #ddd;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 10px 20px;
+}
+
+nav ul li {
+  margin-right: 25px;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
+}
+
+nav ul li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #999; /* light grey links */
+  font-weight: 500;
+  padding: 8px 15px;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
+}
+
+nav ul li a i {
+  margin-right: 8px;
+}
+
+nav ul li a:hover,
+nav ul li.active a {
+  background-color: #00b894;
+  color: #fff;
+}
+
+nav ul li a:hover i,
+nav ul li.active a i {
+  color: #fff;
+}
+
+.habits-container {
+  padding: 25px 40px;
+}
+
+.top-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 25px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.filters-left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.filter-box,
+.sort-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.filter-box select,
+.sort-box select {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 14px;
+  background: #fff;
+}
+
+.filters-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  padding: 6px 12px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  width: 160px;
+}
+
+.add-btn {
+  background: #4caf91;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.add-btn:hover {
+  background: #3a8d73;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  margin-top: 100px;
+  color: #9b9b9b;
+}
+.empty-state i {
+  font-size: 40px;
+  color: #d1d1d1;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Modal Styling */
+.modal-overlay {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  width: 340px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.modal-subtext {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal input,
+.modal textarea,
+.modal select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.modal textarea {
+  height: 70px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.modal-actions button {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px 12px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.modal-actions .submit {
+  background: #4caf91;
+  color: white;
+  border: none;
+}
+.hidden {
+  display: none;
+}
+.day-select {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: 10px;
+  width: 200px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.day-select label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+
+.day-select input[type="checkbox"] {
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+.habit-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 15px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.habit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.habit-header h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.habit-header .mark-complete {
+  border: 1px solid #00b894;
+  background: #eafff4;
+  color: #00b894;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.habit-header .mark-complete:hover {
+  background: #00b894;
+  color: white;
+}
+
+.habit-meta {
+  margin-top: 10px;
+  display: flex;
+  gap: 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+.habit-meta i {
+  margin-right: 6px;
+}
+
+.habit-days {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.day-box {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-align: center;
+  min-width: 60px;
+}
+
+.day-box .date {
+  font-weight: 600;
+  display: block;
+}
+
+.day-box .day {
+  font-size: 13px;
+  color: #666;
+}
+.habit-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+}
+.habit-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.habit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.habit-header h4 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.habit-header p {
+  font-size: 14px;
+  color: #555;
+}
+
+.habit-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.habit-actions i {
+  font-size: 16px;
+  color: #666;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.habit-actions i:hover {
+  color: #e53e3e;
+}
+.habit-actions .edit:hover {
+  color: #3182ce;
+}
+
+.mark-complete {
+  border: 1px solid #38a169;
+  color: #38a169;
+  background: #f0fff4;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+.mark-complete:hover {
+  background: #38a169;
+  color: #fff;
+}
+
+.habit-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.habit-meta .freq {
+  background: #edf2f7;
+  color: #2d3748;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.habit-meta .streak {
+  background: #fff5f5;
+  color: #e53e3e;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.habit-days {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  gap: 8px;
+}
+
+.day-box {
+  flex: 1;
+  text-align: center;
+  background: #f7f7fa;
+  border-radius: 6px;
+  padding: 10px;
+}
+.date {
+  display: block;
+  font-weight: bold;
+}
+.day {
+  font-size: 13px;
+  color: #555;
+}
+.habit-actions i {
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  margin-left: 8px;
+}
+.habit-actions .edit{
+    color: lightseagreen;
+}
+.habit-actions .delete{
+    color: red;
+}
+/* Edit icon color */
+.habit-actions .edit {
+  color: #007bff; /* blue */
+}
+.habit-actions .edit:hover {
+  color: #0056b3; /* darker blue on hover */
+}
+
+/* Delete icon color */
+.habit-actions .delete {
+  color: #dc3545; /* red */
+}
+.habit-actions .delete:hover {
+  color: #a71d2a; /* darker red on hover */
+}
+
+/* Optional: button styling */
+.habit-actions .mark-complete {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.habit-actions .mark-complete:hover {
+  background-color: #218838;
+}
+/* === Delete Confirmation Modal === */
+.delete-modal {
+  max-width: 380px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px 25px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.2s ease;
+}
+
+.delete-modal h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.delete-modal .modal-subtext {
+  font-size: 0.95rem;
+  color: #333;
+  margin: 15px 0;
+}
+
+.delete-modal .modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.delete-modal .cancel {
+  background: #fff;
+  border: 1px solid #bbb;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.delete-modal .cancel:hover {
+  background: #f1f1f1;
+}
+
+.delete-modal .delete-btn {
+  background: #28a745;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.delete-modal .delete-btn:hover {
+  background: #218838;
+}
+/* ====== Theme Toggle Button ====== */
+.theme-toggle-container {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+}
+
+.theme-toggle {
+  background: #1f1f1f;
+  border: 1px solid #333;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: #2c2c2c;
+}
+
+/* ====== Light Mode ====== */
+body {
+  background-color: #f8f9fa;
+  color: #1a1a1a;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* ====== Dark Mode ====== */
+body.dark-mode {
+  background-color: #0f0f0f;
+  color: #f5f5f5;
+}
+
+/* Habit Cards */
+.habit-card {
+  background: #ffffff;
+  color: #1a1a1a;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .habit-card {
+  background: #1b1b1b;
+  color: #e0e0e0;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+}
+
+/* Completed/Mark Complete buttons */
+.mark-complete {
+  border: 1px solid #555;
+  background: transparent;
+  color: #f0f0f0;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark-mode .mark-complete {
+  background: #2e8b57;
+  color: #fff;
+}
+
+/* Calendar Boxes */
+.day-box {
+  border-radius: 6px;
+  padding: 8px;
+  text-align: center;
+  color: #fff;
+}
+
+body.dark-mode .day-box[style*="#2e8b57"] {
+  background: #29a874 !important; /* brighter green */
+}
+
+body.dark-mode .day-box[style*="#ff4c4c"] {
+  background: #d43f3f !important; /* darker red */
+}
+
+body.dark-mode .day-box[style*="#ccc"] {
+  background: #444 !important;
+  color: #bbb !important;
+}
+/* === LIGHT MODE (default) === */
+body {
+  background-color: #ffffff;
+  color: #111111;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* === DARK MODE === */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Headings and text */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode a,
+body.dark-mode li,
+body.dark-mode label {
+  color: #ffffff;
+}
+
+/* Navbar and card backgrounds */
+body.dark-mode header,
+body.dark-mode nav,
+body.dark-mode .card,
+body.dark-mode .habit-box {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+/* Buttons */
+body.dark-mode button {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+body.dark-mode button:hover {
+  background-color: #444;
+}
+
+/* Light mode buttons */
+button {
+  background-color: #f1f1f1;
+  color: #111;
+  border: 1px solid #ccc;
+}
+
+/* Toggle icon (top-right corner) */
+#themeToggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+body.light-mode #themeToggle {
+  background: #eee;
+  color: #111;
+}
+
+/* === Base Styles === */
+.top-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 25px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.filters-left,
+.filters-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.filter-box,
+.sort-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.filter-box i,
+.sort-box i {
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.filter-box select,
+.sort-box select {
+  border: none;
+  background: transparent;
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  padding: 6px 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.search-bar i {
+  margin-right: 8px;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #333;
+  font-size: 14px;
+  width: 160px;
+}
+
+.add-btn {
+  background-color:lightseagreen;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.add-btn i {
+  margin-right: 6px;
+}
+
+/* === Dark Mode === */
+body.dark-mode {
+  background-color: #000;
+  color: #fff;
+}
+
+body.dark-mode .top-filters {
+  background-color: #111;
+  color: #fff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .filter-box,
+body.dark-mode .sort-box {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: #fff;
+}
+
+body.dark-mode .filter-box i,
+body.dark-mode .sort-box i {
+  color: #aaa;
+}
+
+body.dark-mode select {
+  color: #fff;
+  background-color: #1a1a1a;
+}
+
+body.dark-mode .search-bar {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: #fff;
+}
+
+body.dark-mode .search-bar i {
+  color: #bbb;
+}
+
+body.dark-mode .search-bar input {
+  color: #fff;
+}
+
+body.dark-mode .add-btn {
+  background-color: lightseagreen;
+  color: #fff;
+  font-weight: 600;
+}
+
+body.dark-mode .add-btn:hover {
+  background-color: #20b2aa;
+}
+/* =====================================
+   📱 Tablet Responsive View (768–1024px)
+   Matches the screenshot layout perfectly
+===================================== */
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+  body {
+    padding: 10px 25px;
+    font-size: 16px;
+  }
+
+  /* --- Header Section --- */
+  header h1 {
+    font-size: 1.8rem;
+    text-align: left;
+  }
+
+  header p {
+    font-size: 0.95rem;
+  }
+
+  /* --- Navbar or Tabs (Dashboard, Tasks, Habits, Rules) --- */
+  .nav-bar, .tabs, .top-nav {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .tabs button,
+  .nav-link {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+  }
+
+  /* --- Filters and Sort Section --- */
+  .filters-container,
+  .sort-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+  }
+
+  .filters-container select,
+  .sort-container select {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+
+  /* --- Search and Add Habit Button --- */
+  .search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .search-container input {
+    flex: 1;
+    min-width: 250px;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+  }
+
+  .add-habit-btn {
+    font-size: 0.95rem;
+    padding: 10px 18px;
+  }
+
+  /* --- Habit Cards --- */
+  .habit-card {
+    max-width: 700px;
+    margin: 15px auto;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .habit-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .habit-card p {
+    font-size: 0.9rem;
+  }
+
+  /* --- Habit Info Row (Daily/Custom, streak, icons) --- */
+  .habit-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+  }
+
+  /* --- Calendar Section --- */
+  .calendar-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    justify-items: center;
+    margin-top: 10px;
+  }
+
+  .calendar-day {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .calendar-day.completed {
+    background-color: #22c55e; /* green */
+    color: #fff;
+  }
+
+  .calendar-day.missed {
+    background-color: #ef4444; /* red */
+    color: #fff;
+  }
+
+  .calendar-day.pending {
+    background-color: #f3f4f6; /* light grey */
+    color: #555;
+  }
+
+  /* --- Buttons inside Cards --- */
+  .habit-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .habit-actions button {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+
+  /* --- Completed Button --- */
+  .completed-btn,
+  .mark-complete-btn {
+    border: 1px solid #22c55e;
+    color: #22c55e;
+    background: transparent;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .completed-btn:hover,
+  .mark-complete-btn:hover {
+    background-color: #22c55e;
+    color: white;
+  }
+}
+/* === Dark Mode for Modals and Dialogs === */
+body.dark-mode .modal,
+body.dark-mode .edit-modal,
+body.dark-mode .confirm-dialog {
+  background-color: #1e1e1e;       /* dark gray background */
+  color: #f5f5f5;                  /* white text */
+  border: 1px solid #333;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Input fields inside dark mode modals */
+body.dark-mode .modal input,
+body.dark-mode .modal textarea,
+body.dark-mode .edit-modal input,
+body.dark-mode .edit-modal textarea,
+body.dark-mode .confirm-dialog input {
+  background-color: #2b2b2b;
+  color: #ffffff;
+  border: 1px solid #444;
+}
+
+body.dark-mode .modal input::placeholder,
+body.dark-mode .modal textarea::placeholder,
+body.dark-mode .edit-modal input::placeholder,
+body.dark-mode .edit-modal textarea::placeholder {
+  color: #aaaaaa;
+}
+
+/* Select dropdowns */
+body.dark-mode select {
+  background-color: #2b2b2b;
+  color: #ffffff;
+  border: 1px solid #444;
+}
+
+/* Buttons inside modals */
+body.dark-mode .modal button,
+body.dark-mode .edit-modal button,
+body.dark-mode .confirm-dialog button {
+  color: #ffffff;
+  border: none;
+}
+
+body.dark-mode .modal .cancel-btn,
+body.dark-mode .edit-modal .cancel-btn,
+body.dark-mode .confirm-dialog .cancel-btn {
+  background-color: #333;
+  color: #ffffff;
+}
+
+body.dark-mode .modal .submit-btn,
+body.dark-mode .edit-modal .submit-btn,
+body.dark-mode .confirm-dialog .confirm-btn {
+  background-color: lightseagreen;
+  color: #ffffff;
+}
+
+body.dark-mode .modal .submit-btn:hover,
+body.dark-mode .edit-modal .submit-btn:hover,
+body.dark-mode .confirm-dialog .confirm-btn:hover {
+  background-color: #20b2aa;
+}
+
+/* Dropdown arrow contrast fix */
+body.dark-mode select:focus {
+  outline: 1px solid lightseagreen;
+}
+
+/* Confirmation dialog overlay background */
+body.dark-mode .modal-overlay,
+body.dark-mode .confirm-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Tablet Layout Fix for Filters, Sort, and Search Bar */
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+  .filter-sort-container {
+    display: flex;
+    flex-wrap: wrap;           /* allows wrapping when space is tight */
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .filter-group,
+  .sort-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 6px 12px;
+    flex: 1 1 180px;           /* make them flexible but not too small */
+  }
+
+  .filter-group select,
+  .sort-group select {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 0.9rem;
+  }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 2 1 240px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    padding: 8px 12px;
+    background: white;
+  }
+
+  .search-bar input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 0.9rem;
+  }
+
+  .add-habit-btn {
+    background-color: lightseagreen;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    padding: 10px 18px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Ensure the whole row stays visible and doesn't overflow */
+  .filter-sort-container > * {
+    min-width: 160px;
+  }
+
+  /* Fix for when screen gets narrow (portrait tablet) */
+  @media screen and (max-width: 850px) {
+    .filter-sort-container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .add-habit-btn {
+      align-self: flex-end;
+      margin-top: 8px;
+    }
+
+    .search-bar {
+      width: 100%;
+    }
+  }
+}
+/* === Calendar container === */
+.calendar {
+  background-color: #1e1e1e; /* dark background */
+  border-radius: 10px;
+  padding: 20px;
+  color: #e0e0e0; /* default light text color */
+}
+
+/* === Weekday labels (Sun, Mon, Tue...) === */
+.calendar .day-name {
+  color: #e0e0e0; /* make visible in dark mode */
+  font-weight: bold;
+  text-align: center;
+  padding: 8px;
+  border-bottom: 1px solid #333;
+}
+
+/* === Calendar dates === */
+.calendar .day {
+  color: #e0e0e0; /* normal date color */
+  background-color: transparent;
+  border-radius: 6px;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Hover and state colors */
+.calendar .day:hover {
+  background-color: #333;
+}
+
+.calendar .day.completed {
+  background-color: #2e7d32; /* green for completed */
+  color: #fff;
+}
+
+.calendar .day.inactive {
+  background-color: #b71c1c; /* red for inactive */
+  color: #fff;
+}
+/* ============================
+   Dark-mode base
+   Add class "dark-mode" to <body>
+   ============================ */
+
+body.dark-mode {
+  --bg: #0f0f0f;
+  --panel: #111111;
+  --muted: #bdbdbd;
+  --text: #ffffff;
+  --accent: #2fb07f; /* lightseagreen-like */
+  --card-border: rgba(255,255,255,0.06);
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* Header / topbar / nav text */
+body.dark-mode header,
+body.dark-mode .topbar,
+body.dark-mode nav,
+body.dark-mode main {
+  background: transparent;
+  color: var(--text);
+}
+
+/* Make sure typical text is white in dark mode */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode p,
+body.dark-mode label,
+body.dark-mode a,
+body.dark-mode .top-filters,
+body.dark-mode .filter-box,
+body.dark-mode .sort-box,
+body.dark-mode .search-bar,
+body.dark-mode .habit-card {
+  color: var(--text);
+}
+
+/* Filters panel: lark/light style panel on dark bg */
+body.dark-mode .top-filters {
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid var(--card-border);
+}
+
+/* Add-habit button — lightseagreen color */
+body.dark-mode .add-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  box-shadow: none;
+}
+
+/* Search box (rounded, light background on dark) */
+body.dark-mode .search-bar input {
+  background: #0f1211;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--text);
+}
+
+/* Habit card */
+body.dark-mode .habit-card {
+  background: #0e0e0e;
+  border: 1px solid var(--card-border);
+  color: var(--text);
+}
+
+/* Streak badge / meta */
+body.dark-mode .habit-meta .streak,
+body.dark-mode .habit-meta .freq {
+  color: var(--muted);
+}
+
+/* ============================
+   Select / Option styling
+   (apply as much as browsers allow)
+   ============================ */
+
+/* The select itself */
+body.dark-mode select {
+  background-color: #151515 !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.06);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 10px 14px;
+}
+
+/* try to force the option styles (may be ignored on some platforms) */
+body.dark-mode select option {
+  background-color: #151515 !important;
+  color: #fff !important;
+  /* some browsers ignore, but many apply */
+}
+
+/* Webkit specific: try to ensure selected text color */
+body.dark-mode select::-webkit-text-fill-color {
+  color: #fff !important;
+}
+
+/* For IE/Edge drop-down arrow */
+body.dark-mode select::-ms-expand {
+  filter: invert(1); /* try to make arrow visible */
+}
+
+/* Focus styles */
+body.dark-mode select:focus {
+  outline: 2px solid rgba(47,176,127,0.14);
+  box-shadow: 0 0 0 3px rgba(47,176,127,0.06);
+}
+
+/* ============================
+   Modal & dialogs in dark mode
+   ============================ */
+
+body.dark-mode .modal,
+body.dark-mode .modal-overlay .modal,
+body.dark-mode .edit-modal,
+body.dark-mode .delete-modal {
+  background: #121212;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+body.dark-mode .modal input,
+body.dark-mode .modal textarea,
+body.dark-mode .modal select,
+body.dark-mode .edit-modal input,
+body.dark-mode .edit-modal textarea,
+body.dark-mode .edit-modal select {
+  background: #0f0f0f;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+body.dark-mode .modal .modal-actions button,
+body.dark-mode .edit-modal .modal-actions button {
+  color: #fff;
+}
+
+/* make checkboxes visible */
+body.dark-mode input[type="checkbox"] {
+  accent-color: var(--accent);
+}
+
+/* Day box (calendar) styles */
+body.dark-mode .day-box {
+  color: #fff;
+  background: #2b2b2b; /* default neutral for day boxes */
+}
+
+/* Completed day (green) and missed (red) colors */
+body.dark-mode .day-box.completed { background: #2e8b57 !important; color:#fff; }
+body.dark-mode .day-box.missed    { background: #c43b3b !important; color:#fff; }
+
+/* If you use inline style coloring in JS, let CSS override easily:
+   prefer class-based coloring rather than inline styles where possible. */
+body.dark-mode .day-box[style] { color: #fff; }
+
+/* ============================
+   Small helpers & fallbacks
+   ============================ */
+
+/* Provide contrast for text in dark mode for elements that keep faint grey */
+body.dark-mode .muted { color: #cfcfcf; }
+
+/* If your nav link is active, show highlight */
+body.dark-mode nav ul li.active a { color: var(--accent); }
+
+/* ============================
+   Responsive adjustments for tablet
+   (copy/paste to existing media queries)
+   ============================ */
+
+/* Tablet: width between 768px and 1024px (portrait and small tablets)
+@media (min-width: 768px) and (max-width: 1024px) {
+  .top-filters { padding: 14px; }
+  .filters-left, .filters-right { display: block; width: 100%; }
+  .filters-right { margin-top: 12px; display:flex; align-items:center; justify-content:flex-end; gap:12px; }
+  .search-bar { flex: 1 1 60%; }
+  .add-btn { flex: 0 0 auto; }
+  .habit-days { gap: 10px; }
+} */
+
+/* ========================= */
+/* 📱 Mobile Responsiveness */
+/* ========================= */
+
+@media (max-width: 768px) {
+  /* General layout */
+  body {
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  header h1 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  /* Filter & Sort containers */
+  .filters-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .filters-container select {
+    width: 100%;
+  }
+
+  /* Search and Add Habit */
+  .search-add-container {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .search-add-container input {
+    width: 100%;
+  }
+
+  .add-habit-btn {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  /* Habit cards */
+  .habit-card {
+    width: 100%;
+    padding: 14px;
+    font-size: 0.95rem;
+  }
+
+  .habit-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .habit-card p {
+    font-size: 0.9rem;
+  }
+
+  /* Streak and frequency section */
+  .habit-meta {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Last 7 days tracker */
+  .habit-days {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .habit-days div {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+
+  /* Action buttons */
+  .habit-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .habit-actions button {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  /* Toast notification */
+  .toast-container {
+    top: 15px;
+    right: 10px;
+    left: 10px;
+    align-items: flex-end;
+  }
+
+  .toast {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+/* Even smaller devices */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.2rem;
+  }
+
+  .filters-container,
+  .search-add-container {
+    padding: 10px;
+
+  }
+
+  .habit-card {
+    padding: 12px;
+  }
+
+  .habit-days div {
+    width: 32px;
+    height: 32px;
+  }
+
+  .add-habit-btn {
+    font-size: 14px;
+  }
+}
+
+/* Toast Notification */
+/* === Toast Notification (Top Right Corner) === */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  min-width: 320px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background-color:lightseagreen;
+  color:#000;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  opacity: 0;
+  transform: translateY(-20px);
+  z-index: 2000;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-close {
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 15px;
+  color: inherit;
+}
+
+/* Dark mode */
+.dark-mode .toast {
+  background-color: #2e2e2e;
+  color: #d4f8d4;
+  box-shadow: 0 4px 12px rgba(255,255,255,0.15);
+}
+
+/* .toast.show {
+  visibility: visible;
+  opacity: 1;
+  bottom: 50px;
+}
+
+.toast-close {
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 15px;
+  color: #1e4620;
+} */
+/* === Modal Overlay Blur Effect === */
+#modalOverlay,
+#editModalOverlay,
+#deleteModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none; /* already handled by JS */
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4); /* semi-transparent dark */
+  backdrop-filter: blur(1px); /* 💥 main blur effect */
+  -webkit-backdrop-filter: blur(1px);
+  z-index: 1000;
+}
+
+/* === Modal Box Styles (optional enhancement) === */
+.modal {
+  background: var(--modal-bg, #fff);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 450px;
+  animation: fadeInUp 0.3s ease;
+}
+
+/* For dark mode modal background */
+.dark-mode .modal {
+  background: #2b2b2b;
+  color: #fff;
+}
+
+/* Optional smooth entrance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* =============================== */
+/* 📱 Exact Mobile Responsiveness */
+/* =============================== */
+
+@media (max-width: 480px) {
+  /* General page layout */
+  body {
+    padding: 12px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  header h1 {
+    font-size: 1.3rem;
+    text-align: left;
+    margin-bottom: 4px;
+  }
+
+  header p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  /* Navigation section */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  nav a {
+    font-size: 0.95rem;
+  }
+
+  /* Filter and Sort container */
+  .filters-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+  }
+
+  .filters-container label {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+  }
+
+  .filters-container select {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 8px 10px;
+    border-radius: 8px;
+  }
+
+  /* Search and Add button section */
+  .search-add-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .search-add-container input {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+
+  .add-habit-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+    border-radius: 8px;
+    background: #3cb179;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Habit card layout */
+  .habit-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    padding: 18px;
+    margin-bottom: 20px;
+  }
+
+  .habit-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+
+  .habit-card p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 14px;
+  }
+
+  /* Frequency and streak badges */
+  .habit-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .habit-meta span {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    background: #f7f7f7;
+  }
+
+  /* Days grid */
+  .habit-days {
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .habit-days div {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  /* Buttons inside habit card */
+  .habit-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .habit-actions button {
+    flex: 1;
+    font-size: 0.9rem;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .habit-actions .delete-btn {
+    color: red;
+    background: none;
+    border: none;
+  }
+
+  .habit-actions .edit-btn {
+    background: none;
+    border: none;
+    color: #3cb179;
+  }
+
+  .habit-actions .completed-btn {
+    background: transparent;
+    border: 1px solid #3cb179;
+    color: #3cb179;
+  }
+
+  /* Toast notification for mobile */
+  .toast-container {
+    top: 15px;
+    right: 10px;
+    left: 10px;
+    align-items: flex-end;
+  }
+
+  .toast {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+/* === Mobile Devices (max-width: 480px) === */
+@media (max-width: 480px) {
+  /* Navbar */
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    height: 50px;
+    font-size: 0.85rem;
+  }
+
+  nav a {
+    margin: 0 4px;
+    padding: 6px 10px;
+  }
+
+  .nav-logo {
+    font-size: 1rem;
+  }
+
+  /* Filters & Sort Container */
+  .filters-sort-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin: 10px;
+  }
+
+  .filter-group,
+  .sort-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+  }
+
+  /* Add Habit Button below filters */
+  #addHabitBtn {
+    margin-top: 8px;
+    width: 100%;
+    padding: 10px;
+    background: #10b981; /* Teal green */
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  #addHabitBtn:hover {
+    background: #0e9a75;
+  }
+
+  /* Adjust modal for mobile */
+  .modal-content {
+    width: 90%;
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+
+  .modal-overlay {
+    backdrop-filter: blur(6px);
+  }
+
+  /* Habits list */
+  .habits-container {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .habit-card {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+}
+
+
+/* === Medium devices (tablets: 481px–768px) === */
+@media (min-width: 481px) and (max-width: 768px) {
+  .task-container {
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 12px;
+  }
+
+  .task-card {
+    padding: 15px;
+  }
+
+  .modal-content {
+    width: 70%;
+  }
+}
+
+/* === Large devices (desktops: 769px and above) === */
+@media (min-width: 769px) {
+  .task-container {
+    padding: 20px 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .modal-content {
+    width: 50%;
+  }
+}
+/* ----------------------------
+   Mobile layout tweaks (≤ 600px)
+   ---------------------------- */
+@media (max-width: 600px) {
+  /* Make the top filter area vertical and spaced */
+  .top-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;        /* breathing room */
+    align-items: stretch; /* children full width */
+  }
+
+  /* Left & right groups become full width rows */
+  .filters-left,
+  .filters-right {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  /* Filter and sort boxes: visible border and full-width-ish */
+  .filter-box,
+  .sort-box {
+    flex: 1 1 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #e3e3e3; /* visible border on mobile */
+    background: var(--filter-bg, #fff);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+  }
+
+  /* Keep icons spaced */
+  .filter-box i,
+  .sort-box i {
+    margin-right: 6px;
+    font-size: 1rem;
+  }
+
+  /* Search takes a full row under filters/sort */
+  .search-bar {
+    flex: 1 1 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
+    background: var(--search-bg, #fff);
+  }
+
+  .search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+    background: transparent;
+  }
+
+  /* Make the Add Habit button full width and placed below the filters/search */
+  .filters-right #addHabitBtn,
+  #addHabitBtn {
+    order: 4;
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 4px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    background: lightseagreen; /* your requested color */
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(16,185,129,0.12);
+  }
+
+  .filters-right #addHabitBtn i,
+  #addHabitBtn i {
+    margin-right: 8px;
+  }
+
+  /* Reduce nav height/compact spacing for mobile */
+  header .topbar h1 { font-size: 1.05rem; }
+  nav {
+    padding: 6px 8px;
+    border-bottom-width: 1px;
+  }
+  nav ul {
+    gap: 6px;
+    padding: 6px 8px;
+    overflow-x: auto; /* scroll if many items */
+  }
+  nav ul li {
+    margin-right: 8px;
+    padding: 6px 8px;
+    border-radius: 6px;
+  }
+  nav ul li a { font-size: 0.9rem; }
+
+  /* Habit cards — slightly smaller text and compact padding */
+  .habit-card {
+    padding: 10px;
+    gap: 8px;
+  }
+  .habit-card .habit-actions .mark-complete {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  /* Day boxes should wrap and be smaller on phone */
+  .habit-days {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .habit-days .day-box {
+    min-width: 44px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  /* Make modal narrower on phone */
+  .modal {
+    max-width: 92%;
+    padding: 18px;
+  }
+}
+
+/* ---------------------------
+   Tablet tweaks (601px - 1024px)
+   --------------------------- */
+@media (min-width: 601px) and (max-width: 1024px) {
+  /* Keep filters in a single row but wrap nicely */
+  .top-filters {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 20px;
+    justify-content: space-between;
+  }
+
+  .filters-left {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex: 1 1 auto;
+  }
+
+  .filters-right {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex: 0 0 auto;
+  }
+
+  .filter-box, .sort-box {
+    flex: 0 0 auto;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #e9e9e9;
+  }
+
+  .search-bar {
+    min-width: 200px;
+  }
+
+  #addHabitBtn {
+    padding: 10px 14px;
+    border-radius: 10px;
+  }
+
+  /* Slightly reduce navbar size for tablets */
+  nav ul li a { font-size: 0.95rem; padding: 8px 10px; }
+}
+
+/* ---------------------------
+   Tablet Responsiveness (601px - 1024px)
+   --------------------------- */
+@media (min-width: 601px) and (max-width: 1024px) {
+  /* Top Filters Layout */
+  .top-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 24px;
+    align-items: stretch;
+  }
+
+  .filters-left,
+  .filters-right {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  /* Filter and Sort styling */
+  .filter-box,
+  .sort-box {
+    flex: 1 1 48%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #e1e1e1;
+    background: var(--filter-bg, #fff);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .filter-box i,
+  .sort-box i {
+    font-size: 1.1rem;
+    color: var(--icon-color, #555);
+  }
+
+  /* Search bar full width under filters */
+  .search-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: var(--search-bg, #fff);
+  }
+
+  .search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background: transparent;
+  }
+
+  /* Add Habit Button */
+  #addHabitBtn {
+    align-self: flex-end;
+    padding: 10px 16px;
+    background: lightseagreen;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.15);
+  }
+
+  #addHabitBtn i {
+    margin-right: 6px;
+  }
+
+  /* Navbar adjustments for tablet */
+  nav {
+    padding: 10px 16px;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  nav ul li a {
+    font-size: 0.95rem;
+    padding: 8px 12px;
+  }
+
+  /* Habit Cards Styling */
+  .habit-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: var(--card-bg, #fff);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .habit-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+
+  .habit-card .habit-actions .mark-complete {
+    font-size: 0.95rem;
+    padding: 8px 12px;
+  }
+
+  /* Days Layout */
+  .habit-days {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .habit-days .day-box {
+    min-width: 50px;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  /* Modal width on tablet */
+  .modal {
+    max-width: 75%;
+    padding: 20px 24px;
+  }
+}
+/* === Fix: Dark Mode + Toggle Position (for Mobile & Tablet) === */
+@media (max-width: 1024px) {
+  /* Move toggle icon to right corner neatly */
+  .dark-mode-toggle {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--text-color, #333);
+    z-index: 1100;
+  }
+
+  /* Ensure toggle color updates properly in dark mode */
+  .dark-mode .dark-mode-toggle {
+    color: #f1f1f1;
+  }
+
+  /* Fix dark mode backgrounds in mobile/tablet */
+  body.dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+  }
+
+  .dark-mode .filter-box,
+  .dark-mode .sort-box,
+  .dark-mode .search-bar {
+    background-color: #1f1f1f;
+    border-color: #333;
+    color: #f1f1f1;
+  }
+
+  .dark-mode nav {
+    background-color: #1b1b1b;
+    border-color: #333;
+  }
+
+  .dark-mode nav ul li a {
+    color: #f1f1f1;
+  }
+
+  .dark-mode .habit-card {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    border-color: #333;
+  }
+
+  .dark-mode .modal {
+    background-color: #2b2b2b;
+    color: #fff;
+  }
+}
+/* === Dark/Light Mode Toggle (Top Right Corner) === */
+.dark-mode-toggle {
+  position: fixed;
+  top: 15px;
+  right: 8px; /* 👈 move closer to the screen edge */
+  font-size: 1.7rem;
+  cursor: pointer;
+  color: var(--text-color, #333);
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  padding: 10px;
+  z-index: 3000;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Hover animation */
+.dark-mode-toggle:hover {
+  transform: scale(1.15);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Icon in dark mode */
+.dark-mode .dark-mode-toggle {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure proper placement in small screens */
+@media (max-width: 600px) {
+  .dark-mode-toggle {
+    top: 12px;
+    right: 6px; /* tighter on mobile edge */
+    font-size: 1.5rem;
+    padding: 8px;
+  }
+}
+.day-box {
+  display:inline-flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:46px;
+  margin:4px;
+  border-radius:6px;
+  background:#f0f0f0;
+  color:#000;
+  font-size:12px;
+  box-sizing:border-box;
+  padding:4px;
+}
+.day-box .date
+ {
+   font-weight:600; 
+   font-size:14px;
+    line-height:1; 
+  }
+.day-box .day {
+   font-size:10px; 
+   opacity:0.8;
+    margin-top:2px; 
+    color: #000;
+    font-weight: bold;
+   }
+.habit-days { 
+  display:flex;
+   flex-wrap:nowrap;
+    gap:6px; 
+    margin-top:8px;
+   }
+.completed-day { 
+  background:#2e8b57 !important;
+   color:#fff !important; 
+  }
+.missed-day {
+   background:#ff4c4c !important; 
+   color:#fff !important; 
+  }
